@@ -34,13 +34,5 @@ public class ProjetoHiperbole {
 	public static void main (String[] args) {
 
 		System.out.println("Projeto Hipérbole");
-		
-		
-		
-		Ponto f1 = new Ponto(3,4);
-		Ponto f2 = new Ponto(1,7);
-		
-		System.out.println("Coordenadas do ponto 1: ("+ f1.getX() +","+ f1.getY() +")");
-		System.out.println("Coordenadas do ponto 2: ("+ f2.getX() +","+ f2.getY() +")");
 	}
 }
