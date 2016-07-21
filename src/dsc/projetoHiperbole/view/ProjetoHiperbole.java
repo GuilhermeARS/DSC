@@ -31,8 +31,8 @@ import dsc.projetoHiperbole.model.Ponto;
  */
 public class ProjetoHiperbole {
 
-	public static void main (String[] args) {
+    public static void main (String[] args) {
 
-		System.out.println("Projeto Hipérbole");
-	}
+        System.out.println("Projeto Hipérbole");
+    }
 }
