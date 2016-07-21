@@ -49,9 +49,17 @@ public class ProjetoHiperbole {
         HiperboleController controller = new HiperboleController();
         
         if(pontox == 0){
-        	controller.calculaPontos(foco, pontoy);
+        	
+        	boolean eixox = true;
+        	boolean eixoy = false;
+        	
+        	controller.calculaVariaveis(foco, pontoy, eixox, eixoy);
         } else {
-        	controller.calculaPontos(foco, pontox);
+        	
+        	boolean eixox = false;
+        	boolean eixoy = true;
+        	
+        	controller.calculaVariaveis(foco, pontox, eixox, eixoy);
         }
     }
 }
