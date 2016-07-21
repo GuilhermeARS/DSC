@@ -1,17 +1,26 @@
 package dsc.projetoHiperbole.controller;
 
+import dsc.projetoHiperbole.model.Foco;
+
 public class HiperboleController {
 
-	public double calculaAB(int c, int ab) {
+	private double calculaAB(double c, double ab) {
 
-		int b = (c * c) - (ab * ab);
+		double b = (c * c) - (ab * ab);
 		double calculo = Math.sqrt(b);
 		
 		return calculo;
 	}
 	
-	public int CalculaEixo(int eixo){
+	private double CalculaEixo(double eixo){
 		
 		return eixo/2;
+	}
+	
+	public void calculaPontos(Foco foco, double c){
+		
+		double a = CalculaEixo(foco.getEixolength());
+		double b = calculaAB(c, a);
+		
 	}
 }

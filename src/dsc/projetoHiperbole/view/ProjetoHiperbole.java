@@ -46,5 +46,12 @@ public class ProjetoHiperbole {
         
         
         Foco foco = new Foco(pontox, pontoy, eixolength);
+        HiperboleController controller = new HiperboleController();
+        
+        if(pontox == 0){
+        	controller.calculaPontos(foco, pontoy);
+        } else {
+        	controller.calculaPontos(foco, pontox);
+        }
     }
 }
