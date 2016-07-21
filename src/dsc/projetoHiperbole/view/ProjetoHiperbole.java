@@ -41,7 +41,7 @@ public class ProjetoHiperbole {
 		System.out.println("Entre com o valor de y do Foco: ");
 		double pontoy = scanner.nextDouble();
 
-		System.out.println("Entre com o tamanho do eixo real: ");
+		System.out.println("Entre com o tamanho do eixo real ou imaginario: ");
 		double eixolength = scanner.nextDouble();
 
 		System.out.println("\n\n");
