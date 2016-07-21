@@ -1,6 +1,6 @@
 package dsc.projetoHiperbole.view;
 
-import dsc.projetoHiperbole.controller.Soma2Mais2;
+import dsc.projetoHiperbole.controller.HiperboleController;
 import dsc.projetoHiperbole.model.Ponto;
 
 
@@ -35,8 +35,7 @@ public class ProjetoHiperbole {
 
 		System.out.println("Projeto Hipérbole");
 		
-		int resultadoSoma = Soma2Mais2.soma2Mais2();
-		System.out.println("Soma de 2 + 2:" + resultadoSoma);
+		
 		
 		Ponto f1 = new Ponto(3,4);
 		Ponto f2 = new Ponto(1,7);
