@@ -1,20 +1,25 @@
 package dsc.projetoHiperbole.model;
 
+import java.text.DecimalFormat;
+
 public class Hiperbole implements Runnable {
 
+	private int init;
+	private int fim;
 	private double a;
 	private double b;
 	private double c;
-	private double x;
 	private boolean eixox;
 	private boolean eixoy;
+	private boolean verifica;
 
-	public Hiperbole(double a, double b, double c, double x, boolean eixox, boolean eixoy) {
+	public Hiperbole(int init, int fim, double a, double b, double c, boolean eixox, boolean eixoy) {
 
+		setInit(init);
+		setFim(fim);
 		setA(a);
 		setB(b);
 		setC(c);
-		setX(x);
 		setEixox(eixox);
 		setEixoy(eixoy);
 	}
@@ -22,21 +27,55 @@ public class Hiperbole implements Runnable {
 	@Override
 	public void run() {
 
-		if (isEixox()) {
+		for (int x = getInit(); x <= getFim(); x++) {
 
-			double yquadrado = (-(getA() * getA() * getB() * getB()) + (getX() * getX() * getB() * getB()))
-					/ (getA() * getA());
-			double y = Math.sqrt(yquadrado);
+			if (isEixox()) {
 
-			System.out.println("P = (" + getX() + "," + y + ")");
+				double yquadrado = (-(getA() * getA() * getB() * getB()) + (x * x * getB() * getB()))
+						/ (getA() * getA());
+				
+				yquadrado = valorAbsoluto(yquadrado);
+				double y = Math.sqrt(yquadrado);
 
-		} else if (isEixoy()) {
+				DecimalFormat format = new DecimalFormat("0.##");
+				String yformat = format.format(y);
+				
+				imprime(x, yformat);
 
-			double yquadrado = ((getA() * getA() * getB() * getB()) + (getX() * getX() * getA() * getA()))
-					/ (getB() * getB());
-			double y = Math.sqrt(yquadrado);
+			} else if (isEixoy()) {
+
+				double yquadrado = ((getA() * getA() * getB() * getB()) + (x * x * getA() * getA()))
+						/ (getB() * getB());
+				double y = Math.sqrt(yquadrado);
+				
+				DecimalFormat format = new DecimalFormat("0.##");
+				String yformat = format.format(y);
+
+				imprime(x, yformat);
+			}
+		}
+	}
+	
+	private double valorAbsoluto(double yquadrado){
+		
+		double convert = yquadrado;
+		
+		if(yquadrado < 0){
 			
-			System.out.println("P = (" + getX() + "," + y + ")");
+			setVerifica(true);
+			convert = Math.abs(yquadrado);
+		}
+		
+		return convert;
+	}
+	
+	private void imprime(double x, String y){
+		
+		if(isVerifica()){
+			System.out.println("P = (" + x + ", " + "-" + y.replaceAll(",", ".") + ")");
+			setVerifica(false);
+		} else {
+			System.out.println("P = (" + x + ", " + y.replaceAll(",", ".") + ")");
 		}
 	}
 
@@ -64,28 +103,44 @@ public class Hiperbole implements Runnable {
 		this.c = c;
 	}
 
-	public boolean isEixox() {
+	public synchronized boolean isEixox() {
 		return eixox;
 	}
 
-	public void setEixox(boolean eixox) {
+	public synchronized void setEixox(boolean eixox) {
 		this.eixox = eixox;
 	}
 
-	public boolean isEixoy() {
+	public synchronized boolean isEixoy() {
 		return eixoy;
 	}
 
-	public void setEixoy(boolean eixoy) {
+	public synchronized void setEixoy(boolean eixoy) {
 		this.eixoy = eixoy;
 	}
 
-	public double getX() {
-		return x;
+	public int getInit() {
+		return init;
 	}
 
-	public void setX(double x) {
-		this.x = x;
+	public void setInit(int init) {
+		this.init = init;
+	}
+
+	public int getFim() {
+		return fim;
+	}
+
+	public void setFim(int fim) {
+		this.fim = fim;
+	}
+
+	public synchronized boolean isVerifica() {
+		return verifica;
+	}
+
+	public synchronized void setVerifica(boolean verifica) {
+		this.verifica = verifica;
 	}
 
 }

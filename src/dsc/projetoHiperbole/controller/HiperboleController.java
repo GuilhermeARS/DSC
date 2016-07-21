@@ -1,6 +1,10 @@
 package dsc.projetoHiperbole.controller;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 import dsc.projetoHiperbole.model.Foco;
+import dsc.projetoHiperbole.model.Hiperbole;
 
 public class HiperboleController {
 
@@ -27,5 +31,21 @@ public class HiperboleController {
 
 	private void geraPontos(double a, double b, double c, boolean eixox, boolean eixoy) {
 
+		//paraleliza 100 pontos
+		Hiperbole hiperbole = new Hiperbole(1, 20, a, b, c, eixox, eixoy);
+		Hiperbole hiperbole2 = new Hiperbole(21, 40, a, b, c, eixox, eixoy);
+		Hiperbole hiperbole3 = new Hiperbole(41, 60, a, b, c, eixox, eixoy);
+		Hiperbole hiperbole4 = new Hiperbole(61, 80, a, b, c, eixox, eixoy);
+		Hiperbole hiperbole5 = new Hiperbole(81, 100, a, b, c, eixox, eixoy);
+		
+		ExecutorService service = Executors.newFixedThreadPool(5);
+		
+		service.execute(hiperbole);
+		service.execute(hiperbole2);
+		service.execute(hiperbole3);
+		service.execute(hiperbole4);
+		service.execute(hiperbole5);
+		
+		service.shutdown();
 	}
 }
