@@ -1,7 +1,9 @@
 package dsc.projetoHiperbole.view;
 
+import java.util.Scanner;
+
 import dsc.projetoHiperbole.controller.HiperboleController;
-import dsc.projetoHiperbole.model.Ponto;
+import dsc.projetoHiperbole.model.Foco;
 
 
 /**
@@ -31,8 +33,18 @@ import dsc.projetoHiperbole.model.Ponto;
  */
 public class ProjetoHiperbole {
 
-    public static void main (String[] args) {
+    private static Scanner scanner;
+
+	public static void main (String[] args) {
 
         System.out.println("Projeto Hipérbole");
+        
+        scanner = new Scanner(System.in);
+        double pontox = scanner.nextDouble();
+        double pontoy = scanner.nextDouble();
+        double eixolength = scanner.nextDouble();
+        
+        
+        Foco foco = new Foco(pontox, pontoy, eixolength);
     }
 }
