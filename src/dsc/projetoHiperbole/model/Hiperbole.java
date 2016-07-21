@@ -38,9 +38,10 @@ public class Hiperbole implements Runnable {
 				double y = Math.sqrt(yquadrado);
 
 				DecimalFormat format = new DecimalFormat("0.##");
+				String xformat = format.format(x);
 				String yformat = format.format(y);
 				
-				imprime(x, yformat);
+				imprime(xformat, yformat);
 
 			} else if (isEixoy()) {
 
@@ -49,9 +50,10 @@ public class Hiperbole implements Runnable {
 				double y = Math.sqrt(yquadrado);
 				
 				DecimalFormat format = new DecimalFormat("0.##");
+				String xformat = format.format(x);
 				String yformat = format.format(y);
 
-				imprime(x, yformat);
+				imprime(xformat, yformat);
 			}
 		}
 	}
@@ -69,7 +71,7 @@ public class Hiperbole implements Runnable {
 		return convert;
 	}
 	
-	private void imprime(double x, String y){
+	private void imprime(String x, String y){
 		
 		if(isVerifica()){
 			System.out.println("P = (" + x + ", " + "-" + y.replaceAll(",", ".") + ")");
