@@ -1,6 +1,8 @@
 package dsc.projetoHiperbole.view;
 
 import dsc.projetoHiperbole.controller.Soma2Mais2;
+import dsc.projetoHiperbole.model.Ponto;
+
 
 /**
  * Classe principal do Projeto Hipérbole, faz chamada para as funções de alto 
@@ -34,6 +36,12 @@ public class ProjetoHiperbole {
 		System.out.println("Projeto Hipérbole");
 		
 		int resultadoSoma = Soma2Mais2.soma2Mais2();
-		System.out.println(resultadoSoma);
+		System.out.println("Soma de 2 + 2:" + resultadoSoma);
+		
+		Ponto f1 = new Ponto(3,4);
+		Ponto f2 = new Ponto(1,7);
+		
+		System.out.println("Coordenadas do ponto 1: ("+ f1.getX() +","+ f1.getY() +")");
+		System.out.println("Coordenadas do ponto 2: ("+ f2.getX() +","+ f2.getY() +")");
 	}
 }
